@@ -64,23 +64,22 @@ public class bank_account {
         this.email = email;
     }
 
-    public void withdraw(float money) {
-        float cash = this.account_balance - money;
-        if (cash < 0) {
-            System.out.printf("\nTried to withdraw $%.2f, but current account balance not enough!\n", cash);
-            System.out.println("Unable to withdraw!");
-            cash = this.account_balance + money;
+    public boolean withdraw(float money) {
+        if (account_balance - money < 0) {
+            return false;
         } else {
-            System.out.printf("\nYou have withdrawn: $%.2f", money);
-            System.out.printf("\nYour new balance is: $%.2f\n", cash);
-            this.account_balance = cash; // Update the account balance
+            account_balance -= money;
+            return true;
         }
     }
 
-    public void deposit(float money) {
-        this.account_balance += money;
-        System.out.printf("\nYou have deposited: $%.2f", money);
-        System.out.printf("\nYour new balance is: $%.2f\n", this.account_balance);
+    public boolean deposit(float money) {
+        if(money <= 0){
+            return false;
+        }else{
+            account_balance += money;
+            return true;
+        }
     }
 
     @Override
@@ -94,5 +93,5 @@ public class bank_account {
         sb.append("\nPhone Number = ").append(phone_number);
         return sb.toString();
     }
-    
+
 }
