@@ -1,0 +1,1 @@
+com.zenshin.classchallenge.ClassChallenge
