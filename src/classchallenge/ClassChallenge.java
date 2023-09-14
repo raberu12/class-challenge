@@ -10,8 +10,8 @@ package classchallenge;
 public class ClassChallenge {
 
     public static void main(String[] args) {
-        bankAccount A = new bankAccount(1234, 1000.0f, "Carlo", "carlo@yahoo.com", 911);
-        bankAccount B = new bankAccount(1235, 5000.0f, "Jarlo", "Jarlo@yahoo.com", 912);
+        BankAccount A = new BankAccount(1234, 1000.0f, "Carlo", "carlo@yahoo.com", 911);
+        BankAccount B = new BankAccount(1235, 5000.0f, "Jarlo", "Jarlo@yahoo.com", 912);
         A.displayAccount();
         if (A.withdraw(700)) {
             System.out.println("\nYour new balance is: $" + A.getAccountBalance());

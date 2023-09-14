@@ -8,7 +8,7 @@ package classchallenge;
  *
  * @author Matt
  */
-public class bankAccount {
+public class BankAccount {
 
     private int accountNumber;
     private float accountBalance;
@@ -16,7 +16,7 @@ public class bankAccount {
     private String email;
     private long phoneNumber;
 
-    public bankAccount(int accountNumber, float accountBalance, String customerName, String email, int phoneNumber) {
+    public BankAccount(int accountNumber, float accountBalance, String customerName, String email, int phoneNumber) {
         this.accountNumber = accountNumber;
         this.accountBalance = accountBalance;
         this.customerName = customerName;
@@ -86,7 +86,7 @@ public class bankAccount {
         System.out.println(this);
     }
 
-    public boolean transfer(float money, bankAccount recepient) {
+    public boolean transfer(float money, BankAccount recepient) {
         if (this.getAccountBalance() > money || money > 0) {
             boolean withdrawFlag = this.withdraw(money);
             if (withdrawFlag) {
