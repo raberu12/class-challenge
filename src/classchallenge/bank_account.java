@@ -8,52 +8,44 @@ package classchallenge;
  *
  * @author Matt
  */
-public class bank_account {
+public class bankAccount {
 
-    private int account_number;
-    private float account_balance;
-    private String customer_name;
+    private int accountNumber;
+    private float accountBalance;
+    private String customerName;
     private String email;
-    private long phone_number;
+    private long phoneNumber;
 
-    public bank_account(int account_number, float account_balance, String customer_name, String email, int phone_number) {
-        this.account_number = account_number;
-        this.account_balance = account_balance;
-        this.customer_name = customer_name;
+    public bankAccount(int accountNumber, float accountBalance, String customerName, String email, int phoneNumber) {
+        this.accountNumber = accountNumber;
+        this.accountBalance = accountBalance;
+        this.customerName = customerName;
         this.email = email;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
     }
 
-    public long getPhone_number() {
-        return phone_number;
+    public int getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setPhone_number(int phone_number) {
-        this.phone_number = phone_number;
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
-    public int getAccount_number() {
-        return account_number;
+    public float getAccountBalance() {
+        return accountBalance;
     }
 
-    public void setAccount_number(int account_number) {
-        this.account_number = account_number;
+    public void setAccountBalance(float accountBalance) {
+        this.accountBalance = accountBalance;
     }
 
-    public float getAccount_balance() {
-        return account_balance;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setAccount_balance(float account_balance) {
-        this.account_balance = account_balance;
-    }
-
-    public String getCustomer_name() {
-        return customer_name;
-    }
-
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getEmail() {
@@ -64,21 +56,52 @@ public class bank_account {
         this.email = email;
     }
 
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public boolean withdraw(float money) {
-        if (account_balance - money < 0) {
+        if (accountBalance - money < 0) {
             return false;
         } else {
-            account_balance -= money;
+            accountBalance -= money;
             return true;
         }
     }
 
     public boolean deposit(float money) {
-        if(money <= 0){
+        if (money <= 0) {
             return false;
-        }else{
-            account_balance += money;
+        } else {
+            accountBalance += money;
             return true;
+        }
+    }
+    
+    public void displayAccount(){
+        System.out.println(this);
+    }
+
+    public boolean transfer(float money, bankAccount recepient) {
+        if (this.getAccountBalance() > money || money > 0) {
+            boolean withdrawFlag = this.withdraw(money);
+            if (withdrawFlag) {
+                boolean depositFlag = recepient.deposit(money);
+                if (depositFlag) {
+                    return true;
+                } else {
+                    this.deposit(money);
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 
@@ -86,11 +109,11 @@ public class bank_account {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("\n\nBank Account:");
-        sb.append("\nAccount Number = ").append(account_number);
-        sb.append("\nAccount Balance = $").append(account_balance);
-        sb.append("\nCustomer Name = ").append(customer_name);
+        sb.append("\nAccount Number = ").append(accountNumber);
+        sb.append("\nAccount Balance = $").append(accountBalance);
+        sb.append("\nCustomer Name = ").append(customerName);
         sb.append("\nEmail = ").append(email);
-        sb.append("\nPhone Number = ").append(phone_number);
+        sb.append("\nPhone Number = ").append(phoneNumber);
         return sb.toString();
     }
 
